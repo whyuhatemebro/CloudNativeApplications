@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "Tema_1_Server.Protos";
+
+service UserDataProcessingService{
+	rpc SendUserData(SendUserDataRequest) returns (SendUserDataResponse);
+}
+
+message SendUserDataRequest{
+	NonProcessedUserData nonProcessedUserData = 1;
+}
+
+message SendUserDataResponse{
+	ProcessedUserData processedUserData = 1;
+}
+
+message NonProcessedUserData{
+	string name = 1;
+	string cnp = 2;
+}
+
+message ProcessedUserData{
+	string name = 1;
+	Gender gender = 2;
+	string age = 3;
+	enum Gender{
+		Male = 0;
+		Female = 1;
+	}
+}
